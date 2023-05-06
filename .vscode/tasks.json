@@ -1,0 +1,47 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cross-compile",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "cross-compile.sh",
+                "${config:SDK_DIR}",
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "deploy",
+            "isBackground": true,
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "deploy.sh",
+                "${config:TARGET_IP}",
+                "${config:DEBUG_PORT}",
+                "${config:BINARY}",
+                "${config:DEST_DIR}",
+                "${config:USER}",
+                "${config:PASS}" 
+            ],
+            "problemMatcher": {
+                "base": "$gcc",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "${config:BINARY}",
+                    "endsPattern": "Listening on port [0-9]{4}"
+                }
+            },
+            "dependsOn": [
+                "cross-compile"
+            ],
+        },
+    ]
+}

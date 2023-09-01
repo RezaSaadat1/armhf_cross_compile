@@ -189,10 +189,15 @@ LD=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabih
 Target configuration settings can be found in the .vscode/settings.json file. Here, you can customize the following parameters:
 
 `TARGET_IP`: The IP address of the target device on the LAN.
+
 `BINARY`: The name of the binary file (default is "firmware.bin").
+
 `SDK_DIR`: The directory path to the Toolchain for the target device
+
 `DEST_DIR`: The directory on the target device where you want to place the binary
+
 `USER`: The SSH username for connecting to the target device.
+
 `PASS`: The SSH password for connecting to the target device.
 
 Make sure that the values of IP, SSH username and password are set according to the target system.

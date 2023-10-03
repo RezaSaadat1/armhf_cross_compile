@@ -47,16 +47,21 @@ lscpu
 sudo dpkg --add-architecture amd64
 
 # Fix repositories.
-echo 'deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports lunar main restricted universe multiverse
-deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports lunar-updates main restricted universe multiverse
-deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports lunar-security main restricted universe multiverse
-deb [arch=amd64] http://archive.ubuntu.com/ubuntu lunar main restricted universe multiverse
-deb [arch=amd64] http://archive.ubuntu.com/ubuntu lunar-updates main restricted universe multiverse
-deb [arch=amd64] http://archive.ubuntu.com/ubuntu lunar-security main restricted universe multiverse' | sudo tee /etc/apt/sources.list
+echo 'deb [arch=amd64,i386] http://us.archive.ubuntu.com/ubuntu/ jammy main restricted universe multiverse
+deb [arch=amd64,i386] http://us.archive.ubuntu.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb [arch=amd64,i386] http://us.archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb [arch=amd64,i386] http://security.ubuntu.com/ubuntu jammy-security main restricted universe multiverse
+
+deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ jammy main restricted universe multiverse
+deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ jammy-updates main restricted universe multiverse
+deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ jammy-backports main restricted universe multiverse
+deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ jammy-security main restricted universe multiverse' | sudo tee /etc/apt/sources.list
 
 # Install necessary libraries.
 sudo apt update
-sudo apt install libc6:amd64 zlib1g:amd64
+
+
+
 ```
 
 ## Installing Required Packages and Libraries

@@ -5,8 +5,8 @@ INCLUDES = -Iinclude
 
 LDFLAGS += -Llib
 
-CFLAGS = -Og -Wall -g
-CFLAGS += -static-libgcc -static-libstdc++ -static
+CFLAGS = -Wall -g3
+#CFLAGS += -static-libgcc -static-libstdc++ -static
 
 CPP=arm-linux-gnueabihf-g++
 CC=arm-linux-gnueabihf-gcc 

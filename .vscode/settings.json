@@ -2,7 +2,6 @@
     "TARGET_IP": "192.168.176.82",
     "DEBUG_PORT": "6666",
     "BINARY": "firmware.bin",
-    "SDK_DIR": "/usr/arm-linux-gnueabihf/bin/",
     "DEST_DIR": "/home/debian",
     "USER": "debian",
     "PASS": "temppwd"

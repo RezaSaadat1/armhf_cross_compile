@@ -4,18 +4,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "cross-compile",
+            "label": "make-build",
             "type": "shell",
-            "command": "sh",
-            "args": [
-                "cross-compile.sh",
-                "${config:SDK_DIR}",
-            ],
-            "problemMatcher": [],
+            "command": "make",
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "deploy",
@@ -40,7 +36,7 @@
                 }
             },
             "dependsOn": [
-                "cross-compile"
+                "make-build"
             ],
         },
     ]

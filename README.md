@@ -1,4 +1,4 @@
-# CrossCompiling Template for ARMhf C/C++
+# CrossCompiling Template for C/C++ Embedded Linux
 ## Overview
 This project provides a comprehensive guide to cross-compiling and remote debugging code execution on ARMhf targets.
 
@@ -69,25 +69,20 @@ sudo apt update
 Now, let's install the necessary dependencies and packages for the project:
 
 ```sh
-sudo apt install cmake make gdb-multiarch git sshpass
+sudo apt install cmake make gdb-multiarch git sshpass curl
 ```
 
-If you plan to build small libraries (like libmodbus, etc.) for use in this project, you'll need to install these packages as well:
+if you wish to install other optional tools useful for your development environment, you can run the following command:
 
 ```bash
-sudo apt install bison cvs flex gperf texinfo automake libtool libssl-dev bc libncurses5-dev
+
+sudo apt install ubuntu-dev-tools build-essential 
 ```
 
 If you want to install additional libraries for your development environment, you can run the following command:
 
 ```sh
-sudo apt install build-essential curl python3 python3-pip autoconf automake autotools-dev libmpc-dev libmpfr-dev libgmp-dev gawk bison flex texinfo gperf  patchutils zlib1g-dev libexpat-dev libtinfo5 libncurses-dev libncurses5 libncurses5-dev libncursesw5-dev device-tree-compiler pkg-config file autogen autoconf-archive 
-```
-
-Lastly, if you wish to install other optional tools useful for your development environment, you can run the following command:
-
-```sh
-sudo apt install ubuntu-dev-tools 
+sudo apt install  python3 python3-pip autoconf automake autotools-dev libmpc-dev libmpfr-dev libgmp-dev gawk bison flex texinfo gperf  patchutils zlib1g-dev libexpat-dev libtinfo5 libncurses-dev libncurses5 libncurses5-dev libncursesw5-dev device-tree-compiler pkg-config file autogen autoconf-archive bison cvs flex gperf texinfo automake libtool libssl-dev bc libncurses5-dev
 ```
 
 ## Selecting the Right Cross-Compiler
@@ -125,15 +120,21 @@ Debian or Ubuntu provides pre-built cross-compilers for various processor archit
 apt-cache search gcc-arm
 ```
 
-You can also find cross-compilers for other architectures, like MIPS:
+You can also find cross-compilers for other architectures, like RISC-V:
 
 ```sh
-apt-cache search gcc-mips
+apt-cache search gcc-riscv
 ```
 
 To install cross-compilers for different targets, use the following commands:
 
-- For Allwinner H3-based Board, Raspberry Pi 3, BeagleBone Black Target:
+- For RaspberryPi 4,5  or any ARM 64-bit Embbeded Linux Board:
+
+```sh
+sudo apt install gcc-aarch64-linux-gnueabihf g++-aarch64-linux-gnueabihf binutils-aarch64-linux-gnu
+```
+
+- For Allwinner H3-based Boards, Raspberry Pi 3, BeagleBone Black or any ARM 32-bit Embbeded Linux Board:
 
 ```sh
 sudo apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf binutils-arm-linux-gnueabihf
@@ -145,10 +146,10 @@ sudo apt install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf binutils-arm-li
 sudo apt install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi binutils-arm-linux-gnueabi
 ```
 
-- For Raspberry Pi Pico or any ARM Cortex-M Board:
+- For Allwinner Nezha or any RISC-V Based Embedded-Linux Board:
 
 ```sh
-sudo apt install gcc-arm-none-eabi g++-arm-none-eabi libnewlib-arm-none-eabi binutils-arm-none-eabi
+sudo apt install gcc-riscv64-linux-gnu g++-riscv64-linux-gnu binutils-riscv64-linux-gnu
 ```
 
 ### Using Prebuilt Toolchains
@@ -167,6 +168,10 @@ This project has a simple structure that's easy to get started with. It's config
 
 The source code is available in the `src/main.cpp` directory:
 ```
+├── .devcontainer
+│   ├── devcontainer.json
+│   ├── Dockerfile
+│   └── postCreateCommand.sh
 ├── .vscode
 │   ├── c_cpp_properties.json
 │   ├── launch.json

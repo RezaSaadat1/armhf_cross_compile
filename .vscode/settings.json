@@ -1,8 +1,8 @@
 {
-    "TARGET_IP": "192.168.176.82",
+    "TARGET_IP": "192.168.75.81",
     "DEBUG_PORT": "6666",
     "BINARY": "firmware.bin",
-    "DEST_DIR": "/home/debian",
-    "USER": "debian",
-    "PASS": "temppwd"
+    "DEST_DIR": "/home/pi",
+    "USER": "pi",
+    "PASS": "pi"
 }

@@ -2,7 +2,28 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "GDB-Debug",
+            "name": "Local Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/program.bin", // Path to your compiled C executable
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                  "description": "Enable pretty-printing for gdb",
+                  "text": "-enable-pretty-printing",
+                  "ignoreFailures": true
+                }
+              ],
+            "preLaunchTask": "local build", 
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "Remote Debug",
             "type": "cppdbg",
             "request": "launch",
             "program": "${config:BINARY}",

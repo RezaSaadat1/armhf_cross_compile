@@ -4,7 +4,23 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "make-build",
+            "label": "local build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-Wall",
+                "-g3",
+                "-o",
+                "program.bin",
+                "src/main.cpp",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "cross build",
             "type": "shell",
             "command": "make",
             "group": {
@@ -36,7 +52,7 @@
                 }
             },
             "dependsOn": [
-                "make-build"
+                "cross build"
             ],
         },
     ]

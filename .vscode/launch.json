@@ -14,7 +14,17 @@
             "MIMode": "gdb",
             "setupCommands": [],
             "preLaunchTask": "local build",
-            "miDebuggerPath": "/usr/bin/gdb"
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:\\MinGw\\bin\\gdb.exe"
+            }
         },
         {
             "name": "Remote Debug",

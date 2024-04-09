@@ -12,12 +12,15 @@
                 "-g3",
                 "-o",
                 "program.bin",
-                "src/main.cpp",
+                "src/main.cpp"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
         },
         {
             "label": "cross build",

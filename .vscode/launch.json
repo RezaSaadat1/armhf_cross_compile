@@ -5,21 +5,15 @@
             "name": "Local Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/program.bin", // Path to your compiled C executable
+            "program": "${workspaceFolder}/program.bin",
             "args": [],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "gdb",
-            "setupCommands": [
-                {
-                  "description": "Enable pretty-printing for gdb",
-                  "text": "-enable-pretty-printing",
-                  "ignoreFailures": true
-                }
-              ],
-            "preLaunchTask": "local build", 
+            "setupCommands": [],
+            "preLaunchTask": "local build",
             "miDebuggerPath": "/usr/bin/gdb"
         },
         {

@@ -5,7 +5,7 @@
     "tasks": [
         {
             "label": "local build",
-            "type": "shell",
+            "type": "cppbuild",
             "command": "g++",
             "args": [
                 "-Wall",
@@ -20,7 +20,7 @@
             "problemMatcher": [
                 "$gcc"
             ],
-            "group": "build",
+            "group": "build"
         },
         {
             "label": "cross build",
@@ -56,7 +56,7 @@
             },
             "dependsOn": [
                 "cross build"
-            ],
-        },
+            ]
+        }
     ]
 }

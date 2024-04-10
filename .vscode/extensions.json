@@ -10,7 +10,8 @@
 		"ms-vscode.hexeditor",
 		"eamodio.gitlens",
 		"vadimcn.vscode-lldb",
-		"ms-vscode.cpptools-extension-pack"
+		"ms-vscode.cpptools-extension-pack",
+		"mcu-debug.memory-view"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [

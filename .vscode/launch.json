@@ -18,6 +18,7 @@
                 "miDebuggerPath": "/usr/bin/gdb"
             },
             "osx": {
+                "externalConsole": true,
                 "MIMode": "lldb"
             },
             "windows": {

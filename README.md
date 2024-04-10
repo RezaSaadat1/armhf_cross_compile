@@ -82,7 +82,7 @@ sudo apt install ubuntu-dev-tools build-essential
 If you want to install additional libraries for your development environment, you can run the following command:
 
 ```sh
-sudo apt install  python3 python3-pip autoconf automake autotools-dev libmpc-dev libmpfr-dev libgmp-dev gawk bison flex texinfo gperf  patchutils zlib1g-dev libexpat-dev libtinfo5 libncurses-dev libncurses5 libncurses5-dev libncursesw5-dev device-tree-compiler pkg-config file autogen autoconf-archive bison cvs flex gperf texinfo automake libtool libssl-dev bc libncurses5-dev
+sudo apt install python3 python3-pip autoconf automake autotools-dev libmpc-dev libmpfr-dev libgmp-dev gawk patchutils zlib1g-dev libexpat-dev libtinfo5 libncurses-dev libncurses5 libncurses5-dev libncursesw5-dev device-tree-compiler pkg-config file autogen autoconf-archive bison cvs flex gperf texinfo libtool libssl-dev bc
 ```
 
 ## Selecting the Right Cross-Compiler

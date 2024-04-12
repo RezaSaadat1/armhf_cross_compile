@@ -5,21 +5,15 @@
     "tasks": [
         {
             "label": "local build",
-            "type": "cppbuild",
-            "command": "g++",
+            "type": "shell",
+            "command": "make",
             "args": [
-                "-Wall",
-                "-g3",
-                "-o",
-                "program.bin",
-                "src/main.cpp"
+              "host_compile"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
+            "problemMatcher": [],
             "group": "build"
         },
         {

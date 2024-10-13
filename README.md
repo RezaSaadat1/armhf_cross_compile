@@ -227,8 +227,6 @@ You can run the program by pressing `F5` in VS Code; the IDE will handle buildin
 
 If you need to run the binary with root privileges, you can uncomment the alternative command in the deploy.sh:
 
-```
-sh
+```sh
 sshpass -p ${PASS} ssh -t ${USER}@${DEST_IP} "cd "$DEST_DIR"; echo "$PASS" | sudo -S gdbserver localhost:$DEBUG_PORT $BINARY
-
 ```

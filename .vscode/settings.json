@@ -1,8 +1,8 @@
 {
-    "TARGET_IP": "192.168.210.156",
+    "TARGET_IP": "192.168.1.11",
     "DEBUG_PORT": "6666",
     "BINARY": "firmware.bin",
-    "DEST_DIR": "/home/ubuntu",
-    "USER": "ubuntu",
+    "DEST_DIR": "/home/debian",
+    "USER": "debian",
     "PASS": "temppwd"
 }

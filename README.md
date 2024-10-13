@@ -174,6 +174,7 @@ The source code is available in the `src/main.cpp` directory:
 │   └── postCreateCommand.sh
 ├── .vscode
 │   ├── c_cpp_properties.json
+│   ├── extensions.json
 │   ├── launch.json
 │   ├── settings.json
 │   └── tasks.json
@@ -182,6 +183,7 @@ The source code is available in the `src/main.cpp` directory:
 ├── cross-compile.sh
 ├── deploy.sh
 ├── firmware.bin
+├── program.bin
 └── src
     └── main.cpp
 ```
@@ -202,8 +204,6 @@ Target configuration settings can be found in the .vscode/settings.json file. He
 
 `BINARY`: The name of the binary file (default is "firmware.bin").
 
-`SDK_DIR`: The directory path to the Toolchain for the target device
-
 `DEST_DIR`: The directory on the target device where you want to place the binary
 
 `USER`: The SSH username for connecting to the target device.
@@ -216,10 +216,19 @@ Make sure that the values of IP, SSH username and password are set according to 
     "TARGET_IP": "192.168.176.82",
     "DEBUG_PORT": "6666",
     "BINARY": "firmware.bin",
-    "SDK_DIR": "/usr/arm-linux-gnueabihf/bin/",
     "DEST_DIR": "/home/debian",
     "USER": "debian",
     "PASS": "temppwd"
 }
 ```
 You can run the program by pressing `F5` in VS Code; the IDE will handle building the binary, sending it to the target, and running the remote GDB Debugger. Alternatively, use the provided `cross-compile.sh` and `deploy.sh` scripts to manually build and deploy the binary.
+
+**Optional Command to Run as Root**
+
+If you need to run the binary with root privileges, you can uncomment the alternative command in the deploy.sh:
+
+```
+sh
+sshpass -p ${PASS} ssh -t ${USER}@${DEST_IP} "cd "$DEST_DIR"; echo "$PASS" | sudo -S gdbserver localhost:$DEBUG_PORT $BINARY
+
+```

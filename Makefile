@@ -5,20 +5,27 @@ INCLUDES = -Iinclude
 
 LDFLAGS += -Llib
 
-CFLAGS = -Wall -g3
-# CFLAGS += -static-libgcc -static-libstdc++ -static
+CFLAGS = -Wall -g3 -O0
+# CFLAGS += -static-libgcc -static-libstdc++ -static  -std=c++11
 
-# CPP=arm-linux-gnueabihf-g++
-# CC=arm-linux-gnueabihf-gcc 
-# AR=arm-linux-gnueabihf-ar 
-# RANLIB=arm-linux-gnueabihf-ranlib
-# LD=arm-linux-gnueabihf-ld
+CPP=arm-linux-gnueabihf-g++
+CC=arm-linux-gnueabihf-gcc 
+AR=arm-linux-gnueabihf-ar 
+RANLIB=arm-linux-gnueabihf-ranlib
+LD=arm-linux-gnueabihf-ld
 
-CPP=riscv64-linux-gnu-g++
-CC=riscv64-linux-gnu-gcc
-AR=riscv64-linux-gnu-ar
-RANLIB=riscv64-linux-gnu-ranlib
-LD=riscv64-linux-gnu-ld
+# CPP=riscv64-linux-gnu-g++
+# CC=riscv64-linux-gnu-gcc
+# AR=riscv64-linux-gnu-ar
+# RANLIB=riscv64-linux-gnu-ranlib
+# LD=riscv64-linux-gnu-ld
+
+# CPP=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
+# CC=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
+# AR=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ar
+# RANLIB=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ranlib
+# LD=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld
+
 
 HOST_CPP=g++
 HOST_CC=gcc

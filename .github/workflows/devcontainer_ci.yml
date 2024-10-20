@@ -11,13 +11,16 @@ jobs:
     strategy:
       matrix:
         platform:
-          - riscv64
           - arm64
           - armhf
+          - armel
+          - riscv64
+          - amd64
+          - i386
     runs-on: ubuntu-20.04
     steps:
-      - run: ls -al
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
@@ -39,11 +42,23 @@ jobs:
             elif [ "${{ matrix.platform }}" == "armhf" ]; then
             export CROSS_ARCH=${{ matrix.platform }}
             export CC=arm-linux-gnueabihf-gcc
-            export CPP=aarch64-linux-gnu-gcc
+            export CPP=arm-linux-gnueabihf-g++
+            elif [ "${{ matrix.platform }}" == "armel" ]; then
+            export CROSS_ARCH=${{ matrix.platform }}
+            export CC=arm-linux-gnueabi-gcc
+            export CPP=arm-linux-gnueabi-g++
             elif [ "${{ matrix.platform }}" == "riscv64" ]; then
             export CROSS_ARCH=${{ matrix.platform }}
             export CC=riscv64-linux-gnu-gcc
-            export CPP=aarch64-linux-gnu-gcc
+            export CPP=riscv64-linux-gnu-g++
+            elif [ "${{ matrix.platform }}" == "amd64" ]; then
+            export CROSS_ARCH=${{ matrix.platform }}
+            export CC=x86_64-linux-gnu-gcc
+            export CPP=x86_64-linux-gnu-g++
+            elif [ "${{ matrix.platform }}" == "i386" ]; then
+            export CROSS_ARCH=${{ matrix.platform }}
+            export CC=i686-linux-gnu-gcc
+            export CPP=i686-linux-gnu-g++
             fi
             make cross_compile
 

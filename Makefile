@@ -6,41 +6,50 @@ INCLUDES = -Iinclude
 LDFLAGS += -Llib
 
 CFLAGS = -Wall -g3 -O0
-# CFLAGS += -static-libgcc -static-libstdc++ -static  -std=c++11
+# CFLAGS += -static-libgcc -static-libstdc++ -static -std=c++11
 
-CPP=arm-linux-gnueabihf-g++
-CC=arm-linux-gnueabihf-gcc 
-AR=arm-linux-gnueabihf-ar 
-RANLIB=arm-linux-gnueabihf-ranlib
-LD=arm-linux-gnueabihf-ld
+TARGET_CPP=arm-linux-gnueabihf-g++
+TARGET_CC=arm-linux-gnueabihf-gcc 
+TARGET_AR=arm-linux-gnueabihf-ar 
+TARGET_RANLIB=arm-linux-gnueabihf-ranlib
+TARGET_LD=arm-linux-gnueabihf-ld
 
-# CPP=riscv64-linux-gnu-g++
-# CC=riscv64-linux-gnu-gcc
-# AR=riscv64-linux-gnu-ar
-# RANLIB=riscv64-linux-gnu-ranlib
-# LD=riscv64-linux-gnu-ld
+# TARGET_CPP=aarch64-linux-gnu-g++
+# TARGET_CC=aarch64-linux-gnu-gcc 
+# TARGET_AR=aarch64-linux-gnu-ar 
+# TARGET_RANLIB=aarch64-linux-gnu-ranlib
+# TARGET_LD=aarch64-linux-gnu-ld
 
-# CPP=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
-# CC=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
-# AR=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ar
-# RANLIB=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ranlib
-# LD=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld
+# TARGET_CPP=riscv64-linux-gnu-g++
+# TARGET_CC=riscv64-linux-gnu-gcc
+# TARGET_AR=riscv64-linux-gnu-ar
+# TARGET_RANLIB=riscv64-linux-gnu-ranlib
+# TARGET_LD=riscv64-linux-gnu-ld
 
+# TARGET_CPP=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
+# TARGET_CC=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
+# TARGET_AR=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ar
+# TARGET_RANLIB=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ranlib
+# TARGET_LD=../gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-ld
 
 HOST_CPP=g++
 HOST_CC=gcc
 
-all: cross_compile
 
-cross_compile:
-	$(CPP) $(CFLAGS) -DARM_TARGET $(LDFLAGS) -o $(PROJECT_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
+CROSS_BINARY_NAME = firmware_$(CROSS_ARCH).bin
+
+
+all:
+	$(TARGET_CPP) $(CFLAGS) -DTARGET $(LDFLAGS) -o $(PROJECT_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
 
 host_compile:
-	$(HOST_CPP) $(CFLAGS) -DHOST_TARGET $(HOST_LDFLAGS) -o program.bin $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
+	$(HOST_CPP) $(CFLAGS) -DHOST $(HOST_LDFLAGS) -o program.bin $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
+
+cross_compile:
+	$(CPP) $(CFLAGS) $(LDFLAGS) -o $(CROSS_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
 
 clean:
-	rm -f $(PROJECT_BINARY_NAME)
-	rm -f program.bin
+	rm -f *.bin
 
 clean_all: clean
 	rm -f lib/*

@@ -1,0 +1,59 @@
+name: Dev Container CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        platform:
+          - riscv64
+          - arm64
+          - armhf
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Dev Container
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/${{ github.repository_owner }}/cross_compile:latest
+          runCmd: |
+            if [ "${{ matrix.platform }}" == "arm64" ]; then
+            export CROSS_ARCH=${{ matrix.platform }}
+            export CC=aarch64-linux-gnu-gcc
+            export CPP=aarch64-linux-gnu-g++
+            elif [ "${{ matrix.platform }}" == "armhf" ]; then
+            export CROSS_ARCH=${{ matrix.platform }}
+            export CC=arm-linux-gnueabihf-gcc
+            export CPP=aarch64-linux-gnu-gcc
+            elif [ "${{ matrix.platform }}" == "riscv64" ]; then
+            export CROSS_ARCH=${{ matrix.platform }}
+            export CC=riscv64-linux-gnu-gcc
+            export CPP=aarch64-linux-gnu-gcc
+            fi
+            make cross_compile
+
+      - name: Upload files to GH release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          file: firmware_${{ matrix.platform }}.bin
+          asset_name: firmware_${{ matrix.platform }}.bin
+          prerelease: true
+          

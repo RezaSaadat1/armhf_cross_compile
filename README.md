@@ -131,7 +131,7 @@ To install cross-compilers for different targets, use the following commands:
 - For RaspberryPi 4,5  or any ARM 64-bit Embbeded Linux Board:
 
 ```sh
-sudo apt install gcc-aarch64-linux-gnueabihf g++-aarch64-linux-gnueabihf binutils-aarch64-linux-gnu
+sudo apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu binutils-aarch64-linux-gnu
 ```
 
 - For Allwinner H3-based Boards, Raspberry Pi 3, BeagleBone Black or any ARM 32-bit Embbeded Linux Board:
@@ -164,7 +164,7 @@ For targets requiring lower GLIBC versions (e.g., nanopi H3), use vendor-provide
 
 ## Compiling, Deploying, and Remote Debugging the Firmware
 
-This project has a simple structure that's easy to get started with. It's configured for VS Code IDE, allowing you to easily compile, deploy, and run binaries on the target using VS Code automation. IDE configuration files can be found in the `.vscode` directory, and automation scripts are provided in `cross-compile.sh` and `deploy.sh`.
+This project has a simple structure that's easy to get started with. It's configured for VS Code IDE, allowing you to easily compile, deploy, and run binaries on the target using VS Code automation. IDE configuration files can be found in the `.vscode` directory, and automation scripts are provided in `deploy.sh`.
 
 The source code is available in the `src/main.cpp` directory:
 ```
@@ -180,7 +180,6 @@ The source code is available in the `src/main.cpp` directory:
 │   └── tasks.json
 ├── Makefile
 ├── README.md
-├── cross-compile.sh
 ├── deploy.sh
 ├── firmware.bin
 ├── program.bin
@@ -221,7 +220,7 @@ Make sure that the values of IP, SSH username and password are set according to 
     "PASS": "temppwd"
 }
 ```
-You can run the program by pressing `F5` in VS Code; the IDE will handle building the binary, sending it to the target, and running the remote GDB Debugger. Alternatively, use the provided `cross-compile.sh` and `deploy.sh` scripts to manually build and deploy the binary.
+You can run the program by pressing `F5` in VS Code; the IDE will handle building the binary, sending it to the target, and running the remote GDB Debugger. Alternatively, use the provided `deploy.sh` scripts to manually build and deploy the binary.
 
 **Optional Command to Run as Root**
 

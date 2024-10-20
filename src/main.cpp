@@ -8,11 +8,11 @@ int main() {
     uname(&name);
     printf("Hello World from System: %s/%s %s\n", name.nodename, name.sysname, name.machine);
     
-    #ifdef ARM_TARGET
+    #ifdef TARGET
     printf("This code is running on ARM target \n");
     #endif
 
-    #ifdef HOST_TARGET
+    #ifdef HOST
     printf("This code is running on Host \n");
     #endif
 

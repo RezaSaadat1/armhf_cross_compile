@@ -1,22 +1,15 @@
 {
 	"name": "Ubuntu",
-    "build": {
-        "dockerfile": "./Dockerfile",
-        "context": "."
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-vscode.cpptools-extension-pack"
-            ]
-        }
-    },
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
-    // "forwardPorts": [],
-
-    // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "./.devcontainer/postCreateCommand.sh"
-
-    // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-    // "remoteUser": "vscode"
+	"build": {
+        "dockerfile": "Dockerfile"
+	},
+    	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"eamodio.gitlens"
+			]
+		}
+	},
+	"postCreateCommand": "./.devcontainer/postCreateCommand.sh"
 }

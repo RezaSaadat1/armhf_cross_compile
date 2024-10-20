@@ -3,6 +3,7 @@
 FROM ubuntu:focal
 
 LABEL dev.containers.features="common"
+ENV DEBIAN_FRONTEND=noninteractive
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

@@ -26,7 +26,7 @@ jobs:
       - name: Run Dev Container
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/${{ github.repository_owner }}/cross_compile:latest
+          imageName: ghcr.io/${{ github.repository_owner }}/cross_compile
           runCmd: |
             if [ "${{ matrix.platform }}" == "arm64" ]; then
             export CROSS_ARCH=${{ matrix.platform }}

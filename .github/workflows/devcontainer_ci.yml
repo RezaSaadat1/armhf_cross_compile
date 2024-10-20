@@ -1,7 +1,10 @@
 name: Dev Container CI
 
-on: [push]
-
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*.*.*"
 permissions:
   contents: write
   packages: write

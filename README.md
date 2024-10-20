@@ -35,6 +35,10 @@ It is recommended to use Ubuntu 18.04 as the development environment. If you alr
 
 After installing VS Code, open it, and a green button will appear in the bottom left corner. Click on it and select "Create Dev Container...". A drop-down menu will open; scroll down and select "Ubuntu," then choose "Create Dev Container `ubuntu`". The Dev Container setup process may take some time. After successful creation, a new window will open, directing you to the workspace inside the created Dev Container.
 
+### DevContainer as Github CI
+The Project Now use Existing DevContianer Configuration for Continuous Integration and Build Releases
+
+
 ### Apple Silicon Users
 
 If you're using a Mac M1/M2, your environment architecture will be arm64, potentially causing issues when running x64 executables later on. To address this in your Docker environment, execute the following commands in your shell:
@@ -59,9 +63,6 @@ deb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ jammy-security main restr
 
 # Install necessary libraries.
 sudo apt update
-
-
-
 ```
 
 ## Installing Required Packages and Libraries
@@ -226,6 +227,6 @@ You can run the program by pressing `F5` in VS Code; the IDE will handle buildin
 
 If you need to run the binary with root privileges, you can uncomment the alternative command in the deploy.sh:
 
-```sh
+```bash
 sshpass -p ${PASS} ssh -t ${USER}@${DEST_IP} "cd "$DEST_DIR"; echo "$PASS" | sudo -S gdbserver localhost:$DEBUG_PORT $BINARY
 ```

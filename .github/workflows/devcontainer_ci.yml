@@ -1,7 +1,10 @@
 name: Dev Container CI
 
-
 on: [push]
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   build:
@@ -52,4 +55,3 @@ jobs:
           file: firmware_${{ matrix.platform }}.bin
           asset_name: firmware_${{ matrix.platform }}.bin
           prerelease: true
-          

@@ -13,8 +13,8 @@ jobs:
           - armhf
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - run: ls -al
+      - uses: actions/checkout@v3
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
@@ -26,7 +26,8 @@ jobs:
       - name: Run Dev Container
         uses: devcontainers/ci@v0.3
         with:
-          imageName: ghcr.io/${{ github.repository_owner }}/cross_compile
+          imageName: ghcr.io/${{ github.repository_owner }}/armhf_cross_compile/devcontainer
+          cacheFrom: ghcr.io/${{ github.repository_owner }}/armhf_cross_compile/devcontainer
           runCmd: |
             if [ "${{ matrix.platform }}" == "arm64" ]; then
             export CROSS_ARCH=${{ matrix.platform }}

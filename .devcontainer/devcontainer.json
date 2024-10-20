@@ -4,26 +4,6 @@
         "dockerfile": "./Dockerfile",
         "context": "."
     },
-    "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": {
-            "installZsh": "true",
-            "username": "vscode",
-            "userUid": "1000",
-            "userGid": "1000",
-            "upgradePackages": "true"
-        },
-        "ghcr.io/devcontainers/features/git:1": {
-            "version": "latest",
-            "ppa": "false"
-        }
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-vscode.cpptools-extension-pack"
-            ]
-        }
-    },
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
     // "forwardPorts": [],
 

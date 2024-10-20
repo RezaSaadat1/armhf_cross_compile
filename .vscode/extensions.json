@@ -11,7 +11,8 @@
 		"eamodio.gitlens",
 		"vadimcn.vscode-lldb",
 		"ms-vscode.cpptools-extension-pack",
-		"mcu-debug.memory-view"
+		"mcu-debug.memory-view",
+		"ms-vscode-remote.remote-containers"
 	],
 	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
 	"unwantedRecommendations": [

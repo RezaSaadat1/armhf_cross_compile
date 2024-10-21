@@ -9,11 +9,27 @@ int main() {
     printf("Hello World from System: %s/%s %s\n", name.nodename, name.sysname, name.machine);
     
     #ifdef TARGET
-    printf("This code is running on ARM target \n");
+    printf("This code is running on target \n");
     #endif
 
     #ifdef HOST
     printf("This code is running on Host \n");
+    #endif
+
+    #ifdef arm64
+    printf("This code is running on Cross Target: arm64 \n");
+    #elif armhf
+    printf("This code is running on Cross Target: armhf \n");
+    #elif armel
+    printf("This code is running on Cross Target: armel \n");
+    #elif riscv64
+    printf("This code is running on Cross Target: riscv64 \n");
+    #elif amd64
+    printf("This code is running on Cross Target: amd64 \n");
+    #elif i386
+    printf("This code is running on Cross Target: i386 \n");
+    #else
+    printf("This code is running on an unknown architecture \n");
     #endif
 
     // Check if running as root

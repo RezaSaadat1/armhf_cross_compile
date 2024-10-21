@@ -9,13 +9,18 @@ int main() {
     printf("Hello World from System: %s/%s %s\n", name.nodename, name.sysname, name.machine);
     
     #ifdef TARGET
+<<<<<<< HEAD
     printf("This code is running on target \n");
+=======
+    printf("This code is running on ARM target \n");
+>>>>>>> ddfcb6579ddb7db7d0c2f09c2feca2acef101b47
     #endif
 
     #ifdef HOST
     printf("This code is running on Host \n");
     #endif
 
+<<<<<<< HEAD
     #ifdef arm64
     printf("This code is running on Cross Target: arm64 \n");
     #elif armhf
@@ -32,6 +37,8 @@ int main() {
     printf("This code is running on an unknown architecture \n");
     #endif
 
+=======
+>>>>>>> ddfcb6579ddb7db7d0c2f09c2feca2acef101b47
     // Check if running as root
     if (geteuid() == 0) {
         printf("The program is running as root.\n");

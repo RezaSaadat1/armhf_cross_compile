@@ -47,8 +47,7 @@ host_compile:
 
 cross_compile:
 	$(CPP) $(CFLAGS) -D$(CROSS_ARCH) $(LDFLAGS) -o $(CROSS_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
-	$(CPP) $(CFLAGS) $(LDFLAGS) -o $(CROSS_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
-
+	
 clean:
 	rm -f *.bin
 

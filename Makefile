@@ -46,11 +46,8 @@ host_compile:
 	$(HOST_CPP) $(CFLAGS) -DHOST $(HOST_LDFLAGS) -o program.bin $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
 
 cross_compile:
-<<<<<<< HEAD
 	$(CPP) $(CFLAGS) -D$(CROSS_ARCH) $(LDFLAGS) -o $(CROSS_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
-=======
 	$(CPP) $(CFLAGS) $(LDFLAGS) -o $(CROSS_BINARY_NAME) $(PROJECT_SOURCES) $(INCLUDES) $(LIB_NAME) $(LDLIBS)
->>>>>>> ddfcb6579ddb7db7d0c2f09c2feca2acef101b47
 
 clean:
 	rm -f *.bin
@@ -59,8 +56,5 @@ clean_all: clean
 	rm -f lib/*
 	rm -rf include/*
 	rm -rf host/lib/*
-<<<<<<< HEAD
 	rm -rf host/include/*
-=======
 	rm -rf host/include/*
->>>>>>> ddfcb6579ddb7db7d0c2f09c2feca2acef101b47
